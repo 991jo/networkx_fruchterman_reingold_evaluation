@@ -42,11 +42,80 @@ With `C=0.5`
 With `C=1.0`
 ![fr_boundary_c=1.0](figs/fr_boundary_c_1.png)
 
+### Cube
+
+This is a simple 3D cube.
+
+### 2D grid
+
+This is a 5x5 node 2D grid.
+
+### Random graph
+
+This is a randomly generated graph (the seed of the RNG is fixed so that the
+same result is produced every time).
+
+This graph has 2 interesting features.
+It has a disconected node which makes it a good example for what happens
+with disconnected graphs.
+And it is planar, however it appears to be hard for the FR algorithm
+to produce a layout without edge crossings.
+
+### Tree
+
+This is a simple Tree with 3 layers and 3 child-nodes per parent node.
+
+### Snake
+
+This graph with 21 nodes connected as one long chain.
+Without a frame this graph should (given enough iterations) straighen out.
+With a frame the snake should produce smooth bends.
+
+### Ball
+
+Ball is the complete graph K_30. It primarily exists as a test for the size of
+the ball of the ball and chain graph.
+
+### Ball and Chain
+
+The ball and chain graph was one of the examples brought up by Paul Brodersen
+to show that the current implementation in networkx produces very uneven node
+distributions.
+This combines the complete graph K_30 with a chain of 5 nodes.
+
+### Small ball and Chain
+
+This is an other test graph to compare with the ball and chain graph.
+Instead of using K_30 it uses K_5 to reduce the force that is pushing the chain
+away.
+This is used to test how much influence the size of the ball has on the layout
+and whether K_30 is an extreme case or if the problem exists already for
+less extreme cases and might be a general problem of the algorithm.
+
+### Eades 6b
+
+Eades 6b is a graph taken from [1] and reused in the paper by FR so we have
+a reference picture of that graph.
+
+### Example graph
+
+This is an other graph that I came up with that is usually drawn rather well
+by the FR algorithm.
+
 ## Detailed analysis
 
 # The completly unconnected graph
 
-TODO
+This is an example that came up in a [question on StackOverflow](https://stackoverflow.com/questions/55812675/how-to-lay-out-nodes-in-a-filled-in-circle-in-networkx).
+The difference in the layout between networkx and Gephi that is described
+here can be explained by Gephi adding an additional graviational force that
+pulls all nodes into the center of the image, preventing them from drifting
+out into the inifite space.
+Adding a frame to that graph simply pushed the nodes into the frame and then
+spaces them out somewhat evenly along the edges.
+This completly unconnected graph is an extreme example that the algorithm
+simply does not handle.
+Therefore I think this example is not applicable to the issue at hand.
 
 # Analysis of the Ball and Chain graph
 
@@ -129,3 +198,7 @@ networkx.
 This brings an advantage in networkx when zooming in, because it gives us more
 space for the edges. However graphs with very densly packed nods overlap often
 as we can see in many of the ball-and-chain graph examples.
+
+## Refernces
+
+[1] P. Eades, ‘A heuristic for graph drawing’, Congressus Numerantium, 42, 149-160 (1984)
