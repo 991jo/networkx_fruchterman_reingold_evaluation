@@ -26,6 +26,22 @@ perfectly evenly in the frame.
 However the chance of distributing a graph perfectly evenly in practice is almost 0.
 Therefore the edges are too long and many nodes are pushed into the frame.
 
+## Overview of the used graphs:
+
+networkx code for all graphs can be found in `example_graphs.py`.
+
+When drawing the graphs with the FR algorithm with the changes described above
+we get the following layouts:
+
+With `C=0.2`
+![fr_boundary_c=0.2](figs/fr_boundary_c_0.2.png)
+
+With `C=0.5`
+![fr_boundary_c=0.5](figs/fr_boundary_c_0.5.png)
+
+With `C=1.0`
+![fr_boundary_c=1.0](figs/fr_boundary_c_1.png)
+
 ## Detailed analysis
 
 # The completly unconnected graph
